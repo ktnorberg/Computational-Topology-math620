@@ -1,5 +1,4 @@
-'''testing
-'''
+
 def union(lis):
   lis = [set(e) for e in lis]
   res = []
