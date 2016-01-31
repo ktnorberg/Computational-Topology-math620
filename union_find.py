@@ -1,5 +1,23 @@
-'''testing
+def vertices(graph):
+"""Returns a list of the graph's vertices."""
+  v = []
+  for e in graph:
+    v += e
+  return list(set(v))
+
+def initial_components(graph):
+  """Returns a list of singleton sets of the vertices in the graph, so that union will have something nice to work with."""
+  v = vertices(graph)
+  return [set([vertex]) for vertex in v]
+
+def edges(graph):
+  """Returns a list of sets, representing the edges in the graph."""
+  return [set e for e in graph]
+
 '''
+
+# A StackOverflow implementation of union.
+
 def union(lis):
   lis = [set(e) for e in lis]
   res = []
@@ -22,11 +40,18 @@ def union(lis):
     lis,res = res,[]
   return res
 
-'''
+
+
 def set(x):
     x.parent = x
     x.rank = 0
     
+def find(x):
+    if x.parent == x:
+        return x
+    else:
+        x.parent = find(x.parent)
+        return x.parent
 
 def union(x, y):
     xroot = find(x)
@@ -40,18 +65,10 @@ def union(x, y):
         xroot.rank = xroot.rank +1
 
         
-def find(x):
-    if x.parent == x:
-        return x
-    else:
-        x.parent = find(x.parent)
-        return x.parent
-'''
 
 
 
 
-'''
 class node:
     def _init_(self, parent, rank = 0):
         self.parent = parent
@@ -78,10 +95,10 @@ def MakeSet(n):
 
 def SameSet(n1, n2):
     return find(n1) == find(n2)
-'''            
 
 
-'''
+
+
 from collections import defaultdict
 
 
